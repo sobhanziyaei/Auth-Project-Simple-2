@@ -16,7 +16,7 @@ export class HomeComponent {
 
   goToProfile() {
     console.log('Go to profile');
-    // TODO: navigate to profile route
+    this.router.navigate(['/profile']);
   }
 
   logout() {
