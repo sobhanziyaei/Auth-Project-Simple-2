@@ -1,1 +1,12 @@
-<p>home works!</p>
+<div class="home-container">
+	<div class="home-card">
+		<div class="home-header">
+			<h2 class="home-title">Welcome, {{ userName }}</h2>
+			<p class="home-subtitle">You're signed in. Manage your account below.</p>
+		</div>
+		<div class="home-actions">
+			<button class="btn btn-profile" (click)="goToProfile()">Profile</button>
+			<button class="btn btn-logout" (click)="logout()">Logout</button>
+		</div>
+	</div>
+</div>
