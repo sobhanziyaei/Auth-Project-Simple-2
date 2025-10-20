@@ -1,1 +1,49 @@
-<p>register works!</p>
+<div class="register-container">
+  <div class="register-card">
+    <h2 class="register-title">Create Account</h2>
+    <p class="register-subtitle">Join us today and get started</p>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+      <div class="form-group">
+        <label for="fullName" class="form-label">Full Name</label>
+        <input
+          type="text"
+          id="fullName"
+          formControlName="fullName"
+          class="form-input"
+          placeholder="Enter your full name"
+        />
+        <div *ngIf="registerForm.get('fullName')?.invalid && registerForm.get('fullName')?.touched" class="error-message">
+          Full name must be at least 2 characters
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-input"
+          placeholder="Enter your email"
+        />
+        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error-message">
+          Please enter a valid email
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          class="form-input"
+          placeholder="Enter your password"
+        />
+        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error-message">
+          Password must be at least 6 characters
+        </div>
+      </div>
+      <button type="submit" [disabled]="registerForm.invalid" class="register-btn">Sign Up</button>
+    </form>
+    <p class="login-link">Already have an account? <a href="/login">Sign in here</a></p>
+  </div>
+</div>
