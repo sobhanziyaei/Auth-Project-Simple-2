@@ -4,9 +4,9 @@ const { hashPassword, signToken, comparePassword } = require("../utils/auth.util
 
 login = async (req, res, next) => {
     try {
-        const { email, password } = req.body;
+        const { username, password } = req.body;
         const user = await userModel.findOne({
-            email,
+            username,
         });
 
         if (!user) {
