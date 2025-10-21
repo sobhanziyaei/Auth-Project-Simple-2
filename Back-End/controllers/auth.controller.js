@@ -10,14 +10,14 @@ login = async (req, res, next) => {
         });
 
         if (!user) {
-            throw { status: 400, message: "کاربری با این ایمیل یافت نشد" };
+            throw { status: 400, message: "User with this username not found" };
         }
 
         if (comparePassword(password, user.password)) {
             const token = signToken({ id: user._id, email: user.email });
             res.send({ token, message: "login successfully" });
         } else {
-            throw { status: 400, message: "email or password is incorrect" };
+            throw { status: 400, message: "username or password is incorrect" };
         }
 
     } catch (error) {
@@ -32,9 +32,7 @@ register = async (req, res, next) => {
         // Check if user with this username already exists
         const existingUser = await userModel.findOne({ username });
         if (existingUser) {
-            const error = new Error('User with this username already exists');
-            error.statusCode = 400;
-            return next(error);
+            throw { status: 400, message: 'User with this username already exists' };
         }
 
         const user = await userModel.create({

@@ -17,16 +17,16 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="email" class="form-label">Email</label>
+        <label for="username" class="form-label">Username</label>
         <input
-          type="email"
-          id="email"
-          formControlName="email"
+          type="text"
+          id="username"
+          formControlName="username"
           class="form-input"
-          placeholder="Enter your email"
+          placeholder="Enter your username"
         />
-        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error-message">
-          Please enter a valid email
+        <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched" class="error-message">
+          Username must be at least 3 characters
         </div>
       </div>
       <div class="form-group">
