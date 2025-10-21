@@ -1,11 +1,12 @@
 const { userModel } = require("../models/user.model");
+const { hashPassword } = require("../utils/auth.util");
 
 register = async (req, res, next) => {
     try {
-        const { fullName, email, password } = req.body;
+        const { fullName, username, password } = req.body;
         const user = await userModel.create({
             fullName,
-            email,
+            username,
             password: hashPassword(password)
         })
         res.send(user);
@@ -15,6 +16,5 @@ register = async (req, res, next) => {
 }
 
 module.exports = {
-    login,
     register
 }
